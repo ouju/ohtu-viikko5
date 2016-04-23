@@ -85,5 +85,22 @@ public class TennisGameTest {
         checkAllScores(game);
     }
 
+    @Test
+    public void player2SaaPisteen(){
+        TennisGame game = new TennisGame("player1", "player2");
+        game.wonPoint("player2");
+        assertEquals(game.getScore(), "Love-Fifteen");
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void tuntematonPelaaja(){
+        TennisGame game = new TennisGame("player1", "player2");
+        game.wonPoint("player");
+    }
 
+    @Test
+    public void scoreNegatiivinen(){
+        TennisGame game = new TennisGame("player1", "player2");
+        game.scoreToString(-1);
+    }
 }
